@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Filip Jiří Kerhart | Web Developer</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background-color: #0d1117;
+      color: #e6edf3;
+      overflow-x: hidden;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: radial-gradient(circle at 25% 25%, #2388ff22, #000);
+    }
+
+    h1 {
+      font-size: 56px;
+      font-weight: 700;
+      background: linear-gradient(90deg, #58a6ff, #00d4ff, #58a6ff);
+      background-size: 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientShift 5s infinite linear;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0%; }
+      100% { background-position: 200%; }
+    }
+
+    h2 {
+      font-weight: 400;
+      color: #a3b3c6;
+      margin-top: 10px;
+      margin-bottom: 40px;
+    }
+
+    .btn {
+      border: 2px solid #58a6ff;
+      padding: 12px 28px;
+      border-radius: 10px;
+      color: #58a6ff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #58a6ff;
+      color: #0d1117;
+      box-shadow: 0 0 12px #58a6ff;
+      transform: translateY(-2px);
+    }
+
+    section {
+      max-width: 850px;
+      margin: 100px auto;
+      padding: 0 20px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h3 {
+      font-size: 28px;
+      margin-bottom: 15px;
+      color: #58a6ff;
+    }
+
+    p {
+      line-height: 1.7;
+      color: #c9d1d9;
+    }
+
+    .highlight {
+      color: #58a6ff;
+      font-weight: 600;
+    }
+
+    /* ===== PROJECTS ===== */
+    .projects {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .project {
+      background: #161b22;
+      border-radius: 16px;
+      border: 1px solid #30363d;
+      padding: 25px;
+      transition: 0.3s;
+    }
+
+    .project:hover {
+      transform: translateY(-5px);
+      border-color: #58a6ff;
+      box-shadow: 0 0 20px #58a6ff33;
+    }
+
+    .project h4 {
+      font-size: 22px;
+      color: #58a6ff;
+      margin-bottom: 8px;
+    }
+
+    .project p {
+      color: #c9d1d9;
+      font-size: 15px;
+    }
+
+    /* ===== CONTACT ===== */
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .contact-links a {
+      text-decoration: none;
+      color: #58a6ff;
+      font-weight: 600;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    .contact-links a:hover {
+      color: #00d4ff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 60px 20px;
+      color: #8b949e;
+      font-size: 14px;
+    }
+
+    @media (min-width: 700px) {
+      .projects {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="hero">
+  <h1>Filip Jiří Kerhart</h1>
+  <h2>Web Developer & Student 👨‍💻</h2>
+  <a href="#about" class="btn">Zjistit víc</a>
+</div>
+
+<section id="about">
+  <h3>🧠 O mně</h3>
+  <p>
+    Ahoj! Jmenuji se Filip a baví mě tvořit <span class="highlight">moderní, přehledné a uživatelsky příjemné weby</span>.
+    Momentálně studuji a rozvíjím své dovednosti v oblasti vývoje frontendu i backendu.
+    Mým cílem je dělat projekty, které <span class="highlight">mají smysl a přinášejí hodnotu</span>.
+  </p>
+</section>
+
+<section id="projects">
+  <h3>🚀 Můj projekt</h3>
+  <div class="projects">
+    <div class="project">
+      <h4>Notamo 📘</h4>
+      <p>
+        Notamo je webová aplikace pro studenty, která propojuje poznámky, taháky, sdílené soubory a nástroje pro učení.
+        Cílem projektu je vytvořit jednoduché a přehledné místo, kde si studenti pomáhají navzájem.
+        <br><br>
+        <span class="highlight">Použité technologie:</span> React, Supabase, Node.js
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <h3>📩 Spojme se</h3>
+  <p>Chceš se na něco zeptat, nebo máš zajímavý nápad? Klidně mi napiš nebo mě sleduj:</p>
+  <div class="contact-links">
+    <a href="mailto:tvoje@email.cz">📧 Email</a>
+    <a href="https://www.linkedin.com/in/filip-jiří-kerhart-945a2122a/" target="_blank">🔗 LinkedIn</a>
+  </div>
+</section>
+
+<footer>
+  © 2025 Filip Jiří Kerhart — Built with ❤️, coffee & curiosity
+</footer>
+
+<script>
+  // Fade-in efekt při scrollování
+  const sections = document.querySelectorAll("section");
+  const reveal = () => {
+    sections.forEach((s) => {
+      const top = s.getBoundingClientRect().top;
+      if (top < window.innerHeight - 100) s.classList.add("visible");
+    });
+  };
+  window.addEventListener("scroll", reveal);
+  reveal();
+</script>
+</body>
+</html>
