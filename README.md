@@ -19,5 +19,5 @@ Je napsaný v čistém **HTML + CSS + JavaScript** a obsahuje informace o mně a
 - GitHub (source control)
 
 ## 📬 Kontakt
-- Email: [tvoje@email.cz](mailto:tvoje@email.cz)
+- Email: [kerhartf@gmail.com](mailto:tvoje@email.cz)
 - GitHub: [github.com/filipkerhart](https://github.com/filipkerhart)
