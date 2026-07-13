@@ -68,9 +68,19 @@
     .nav-dot {
       width: 12px; height: 12px; border-radius: 50%;
     }
-    .dot-red    { background: #ff5f57; }
+    .dot-red    { background: #ff5f57; position: relative; }
     .dot-yellow { background: #febc2e; }
     .dot-green  { background: #28c840; }
+
+    .dot-red .dot-x {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 8px; font-weight: 700; color: rgba(0,0,0,0);
+      line-height: 1; font-family: sans-serif;
+      transition: color 0.15s;
+      user-select: none;
+    }
+    .modal-header:hover .dot-red .dot-x { color: rgba(80,0,0,0.7); }
     .nav-title {
       font-size: 0.78rem; color: var(--muted); font-weight: 400;
       letter-spacing: 0.02em;
@@ -258,11 +268,8 @@
     .modal-header-dots { display: flex; gap: 6px; }
     .modal-title { font-size: 0.72rem; color: var(--muted); flex: 1; text-align: center; }
     .modal-close {
-      background: none; border: none; color: var(--muted);
-      font-size: 1rem; line-height: 1; padding: 0 0.25rem;
-      font-family: inherit; transition: color 0.2s;
+      display: none;
     }
-    .modal-close:hover { color: var(--red); cursor: pointer; }
 
     .modal-body { padding: 1.75rem; }
 
@@ -536,12 +543,14 @@
   <div class="modal-box">
     <div class="modal-header">
       <div class="modal-header-dots">
-        <div class="nav-dot dot-red"></div>
+        <div class="nav-dot dot-red" id="modal-close" style="cursor:pointer;">
+          <span class="dot-x">✕</span>
+        </div>
         <div class="nav-dot dot-yellow"></div>
         <div class="nav-dot dot-green"></div>
       </div>
       <div class="modal-title" id="modal-title">project.json</div>
-      <button class="modal-close" id="modal-close">✕</button>
+      <button class="modal-close"></button>
     </div>
     <div class="modal-body" id="modal-body"></div>
   </div>
