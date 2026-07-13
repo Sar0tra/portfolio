@@ -433,9 +433,10 @@
         <span class="cmd">ls <span class="flag">-la</span> projects/</span>
       </div>
       <div class="output">
-        <p><span class="muted">total 2</span></p>
+        <p><span class="muted">total 3</span></p>
         <p><span class="muted">-rwxr-xr-x  void-studio/</span></p>
         <p><span class="muted">-rwxr-xr-x  notamo/</span></p>
+        <p><span class="muted">-rwxr-xr-x  cryptodesk/</span></p>
       </div>
 
       <!-- cat void-studio -->
@@ -483,6 +484,32 @@
             <span class="proj-tag">React</span>
             <span class="proj-tag">Supabase</span>
             <span class="proj-tag">Node.js</span>
+          </div>
+          <span class="proj-link">→ kliknout pro detail</span>
+        </div>
+      </div>
+
+      <!-- cat cryptodesk -->
+      <div class="line">
+        <span class="prompt"><span class="prompt-path">filip@dev</span>:<span class="prompt-sym">~$</span></span>
+        <span class="cmd">cat <span class="str">projects/cryptodesk.json</span></span>
+      </div>
+      <div class="output">
+        <div class="proj-card" data-project="cryptodesk" style="cursor:pointer;">
+          <div class="proj-card-top">
+            <span class="proj-name">CryptoDesk</span>
+            <span class="proj-year">2026</span>
+          </div>
+          <p class="proj-desc">
+            Crypto portfolio dashboard s live grafy, rozložením aktiv a historií
+            transakcí. Postaveno na Vite + React + Recharts s tmavým UI.
+          </p>
+          <div class="proj-tags">
+            <span class="proj-tag">React</span>
+            <span class="proj-tag">Vite</span>
+            <span class="proj-tag">Recharts</span>
+            <span class="proj-tag">JavaScript</span>
+            <span class="proj-tag">Vercel</span>
           </div>
           <span class="proj-link">→ kliknout pro detail</span>
         </div>
@@ -603,6 +630,26 @@ Backend je postavený na Supabase pro real-time synchronizaci dat, frontend v Re
         'Kategorizace materiálů podle předmětů',
       ],
       url: null,
+      github: null,
+    },
+    'cryptodesk': {
+      name: 'CryptoDesk',
+      year: '2026',
+      type: 'Dashboard / Admin panel',
+      status: 'Nasazeno ✓',
+      desc: `Crypto portfolio dashboard zobrazující přehled aktiv, historický vývoj hodnoty portfolia a poslední transakce.
+Celý projekt je postavený na Vite + React s knihovnou Recharts pro interaktivní grafy.
+UI je inspirované profesionálními fintech produkty — tmavé pozadí, indigo akcent a přehledné kartičky s datovými metrikami.`,
+      tech: ['React', 'Vite', 'Recharts', 'JavaScript', 'CSS-in-JS', 'Vercel'],
+      highlights: [
+        'Area chart s gradientem — historická hodnota portfolia za rok',
+        'Donut chart s rozložením aktiv (BTC, ETH, SOL, BNB, ADA)',
+        'Tabulka aktiv s cenou, 24h změnou a hodnotou v portfoliu',
+        'Přehled posledních transakcí (nákupy/prodeje)',
+        'Stat karty s radial gradient glow efektem',
+        'Sidebar navigace s uživatelským profilem',
+      ],
+      url: 'https://cryptodesk-fk.vercel.app',
       github: null,
     },
   }
