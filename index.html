@@ -222,6 +222,86 @@
     /* ── Section spacing ── */
     .section-gap { height: 2.5rem; }
 
+    /* ── Modal ── */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 500;
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(6px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 1.5rem;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+
+    .modal-box {
+      width: 100%; max-width: 680px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.7);
+      transform: translateY(16px) scale(0.98);
+      transition: transform 0.25s cubic-bezier(0.16,1,0.3,1);
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    .modal-overlay.open .modal-box { transform: none; }
+
+    .modal-header {
+      background: var(--bg3);
+      border-bottom: 1px solid var(--border);
+      padding: 0.75rem 1.25rem;
+      display: flex; align-items: center; gap: 0.875rem;
+      position: sticky; top: 0; z-index: 1;
+    }
+    .modal-header-dots { display: flex; gap: 6px; }
+    .modal-title { font-size: 0.72rem; color: var(--muted); flex: 1; text-align: center; }
+    .modal-close {
+      background: none; border: none; color: var(--muted);
+      font-size: 1rem; line-height: 1; padding: 0 0.25rem;
+      font-family: inherit; transition: color 0.2s;
+    }
+    .modal-close:hover { color: var(--red); cursor: pointer; }
+
+    .modal-body { padding: 1.75rem; }
+
+    .modal-cmd-line {
+      display: flex; gap: 0.5rem; margin-bottom: 1.25rem;
+    }
+    .modal-section { margin-bottom: 1.5rem; }
+    .modal-section-label {
+      font-size: 0.7rem; color: var(--muted); margin-bottom: 0.5rem;
+      letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .modal-section-label::before { content: '# '; color: var(--border); }
+    .modal-detail-text {
+      color: #8b949e; font-size: 0.82rem; line-height: 1.85;
+    }
+    .modal-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .modal-tag {
+      padding: 0.2rem 0.7rem; border-radius: 4px; font-size: 0.72rem; font-weight: 500;
+      background: rgba(0,255,136,0.07); border: 1px solid rgba(0,255,136,0.15);
+      color: var(--green);
+    }
+    .modal-links { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.5rem; }
+    .modal-link-btn {
+      padding: 0.6rem 1.25rem; border-radius: 6px; font-size: 0.78rem;
+      font-family: inherit; font-weight: 600; text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .modal-link-btn:hover { opacity: 0.8; }
+    .modal-link-primary { background: var(--green); color: #0d1117; }
+    .modal-link-secondary {
+      background: transparent; color: var(--muted);
+      border: 1px solid var(--border);
+    }
+    .modal-divider { border: none; border-top: 1px solid var(--border); margin: 1.25rem 0; }
+    .modal-meta { display: flex; gap: 2rem; flex-wrap: wrap; }
+    .modal-meta-item { font-size: 0.78rem; }
+    .modal-meta-key { color: var(--muted); display: block; margin-bottom: 0.2rem; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; }
+    .modal-meta-val { color: var(--text); font-weight: 500; }
+
     /* ── Responsive ── */
     @media (max-width: 640px) {
       nav { padding: 0.75rem 1rem; }
@@ -276,7 +356,7 @@
         <div class="output">
           <p><span class="hl">Filip Jiří Kerhart</span></p>
           <p>Web Developer & Student</p>
-          <p>Praha, Česká republika</p>
+          <p>Jablonec nad Nisou, Česká republika</p>
         </div>
 
         <!-- cat about.txt -->
@@ -285,7 +365,7 @@
           <span class="cmd">cat <span class="str">about.txt</span></span>
         </div>
         <div class="output">
-          <p>Ahoj! Jsem <span class="hl">student a frontend developer</span> z Prahy.</p>
+          <p>Ahoj! Jsem <span class="hl">student a frontend developer</span> z Jablonce.</p>
           <p>Baví mě tvořit moderní weby a aplikace, které fungují</p>
           <p>a vypadají dobře. Experimentuji s animacemi, UI/UX</p>
           <p>a stavím projekty od nápadu po nasazení.</p>
@@ -357,15 +437,14 @@
         <span class="cmd">cat <span class="str">projects/void-studio.json</span></span>
       </div>
       <div class="output">
-        <a href="https://void-studio-cz.vercel.app" target="_blank" class="proj-card">
+        <div class="proj-card" data-project="void-studio" style="cursor:pointer;">
           <div class="proj-card-top">
             <span class="proj-name">VOID Studio</span>
             <span class="proj-year">2026</span>
           </div>
           <p class="proj-desc">
             Landing page kreativní agentury. Vlastní kurzor s lagging efektem,
-            canvas částicový efekt, scroll-reveal animace, animovaný marquee
-            banner a animovaná počítadla statistik.
+            canvas částicový efekt, scroll-reveal animace a animovaný marquee banner.
           </p>
           <div class="proj-tags">
             <span class="proj-tag">React</span>
@@ -374,8 +453,8 @@
             <span class="proj-tag">CSS Animations</span>
             <span class="proj-tag">Vercel</span>
           </div>
-          <span class="proj-link">→ void-studio-cz.vercel.app</span>
-        </a>
+          <span class="proj-link">→ kliknout pro detail</span>
+        </div>
       </div>
 
       <!-- cat notamo -->
@@ -384,21 +463,21 @@
         <span class="cmd">cat <span class="str">projects/notamo.json</span></span>
       </div>
       <div class="output">
-        <div class="proj-card">
+        <div class="proj-card" data-project="notamo" style="cursor:pointer;">
           <div class="proj-card-top">
             <span class="proj-name">Notamo</span>
             <span class="proj-year">2025</span>
           </div>
           <p class="proj-desc">
             Webová aplikace pro studenty, která propojuje poznámky, taháky
-            a sdílené soubory. Jednoduché a přehledné místo, kde si studenti
-            pomáhají navzájem.
+            a sdílené soubory. Jednoduché a přehledné místo pro vzájemnou pomoc.
           </p>
           <div class="proj-tags">
             <span class="proj-tag">React</span>
             <span class="proj-tag">Supabase</span>
             <span class="proj-tag">Node.js</span>
           </div>
+          <span class="proj-link">→ kliknout pro detail</span>
         </div>
       </div>
 
@@ -452,14 +531,158 @@
   </p>
 </footer>
 
+<!-- MODAL -->
+<div class="modal-overlay" id="modal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-header-dots">
+        <div class="nav-dot dot-red"></div>
+        <div class="nav-dot dot-yellow"></div>
+        <div class="nav-dot dot-green"></div>
+      </div>
+      <div class="modal-title" id="modal-title">project.json</div>
+      <button class="modal-close" id="modal-close">✕</button>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
+
 <script>
-  // Plynulý scroll pro nav linky
+  // Plynulý scroll
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       const target = document.querySelector(a.getAttribute('href'))
       if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }) }
     })
   })
+
+  // Data projektů
+  const PROJECTS = {
+    'void-studio': {
+      name: 'VOID Studio',
+      year: '2026',
+      type: 'Landing page',
+      status: 'Nasazeno ✓',
+      desc: `Moderní landing page pro fiktivní kreativní studio navržená jako ukázkový projekt do portfolia.
+Stránka obsahuje vlastní kurzor s lagging ring efektem, animované částice na canvas, scroll-reveal animace na všech sekcích, pohybující se marquee banner a count-up animaci statistik při scrollu.
+Celý projekt je v češtině a nasazen na Vercel s custom subdoménou.`,
+      tech: ['React', 'JavaScript', 'CSS Animations', 'Canvas API', 'Intersection Observer', 'Vercel'],
+      highlights: [
+        'Vlastní kurzor — dot + lagging ring sledující pohyb myši',
+        'Canvas částicový efekt v hero sekci',
+        'Hover efekty na project rows — gradient fill při najetí',
+        'Animovaný marquee banner se službami',
+        'Count-up čísla (48+, 98%, ...) při scrollu do view',
+        'Frosted glass navbar při scrollu',
+      ],
+      url: 'https://void-studio-cz.vercel.app',
+      github: 'https://github.com/Sar0tra/void-studio-landing',
+    },
+    'notamo': {
+      name: 'Notamo',
+      year: '2025',
+      type: 'Webová aplikace',
+      status: 'V vývoji',
+      desc: `Notamo je platforma pro studenty, která propojuje sdílené poznámky, taháky a studijní materiály na jednom místě.
+Cílem projektu je vytvořit jednoduché a přehledné místo, kde si studenti navzájem pomáhají a sdílejí vědomosti.
+Backend je postavený na Supabase pro real-time synchronizaci dat, frontend v Reactu.`,
+      tech: ['React', 'Supabase', 'Node.js', 'PostgreSQL', 'JavaScript'],
+      highlights: [
+        'Real-time synchronizace poznámek přes Supabase',
+        'Autentizace uživatelů (email + OAuth)',
+        'Sdílení souborů a dokumentů mezi studenty',
+        'Kategorizace materiálů podle předmětů',
+      ],
+      url: null,
+      github: null,
+    },
+  }
+
+  const overlay = document.getElementById('modal')
+  const body    = document.getElementById('modal-body')
+  const title   = document.getElementById('modal-title')
+
+  function openModal(key) {
+    const p = PROJECTS[key]
+    if (!p) return
+
+    title.textContent = `projects/${key}.json`
+
+    const highlights = p.highlights.map(h =>
+      `<p class="modal-detail-text" style="margin-bottom:0.3rem;">
+        <span style="color:var(--green)">+</span> ${h}
+      </p>`
+    ).join('')
+
+    const links = p.url || p.github ? `
+      <div class="modal-links">
+        ${p.url ? `<a href="${p.url}" target="_blank" class="modal-link-btn modal-link-primary">→ Otevřít projekt</a>` : ''}
+        ${p.github ? `<a href="${p.github}" target="_blank" class="modal-link-btn modal-link-secondary">GitHub</a>` : ''}
+      </div>` : ''
+
+    body.innerHTML = `
+      <div class="modal-cmd-line">
+        <span class="prompt"><span class="prompt-path">filip@dev</span>:<span class="prompt-sym">~$</span></span>
+        <span class="cmd">cat <span style="color:var(--purple)">projects/${key}.json</span></span>
+      </div>
+
+      <div class="modal-meta">
+        <div class="modal-meta-item">
+          <span class="modal-meta-key">Název</span>
+          <span class="modal-meta-val" style="color:var(--blue)">${p.name}</span>
+        </div>
+        <div class="modal-meta-item">
+          <span class="modal-meta-key">Typ</span>
+          <span class="modal-meta-val">${p.type}</span>
+        </div>
+        <div class="modal-meta-item">
+          <span class="modal-meta-key">Rok</span>
+          <span class="modal-meta-val">${p.year}</span>
+        </div>
+        <div class="modal-meta-item">
+          <span class="modal-meta-key">Status</span>
+          <span class="modal-meta-val" style="color:var(--green)">${p.status}</span>
+        </div>
+      </div>
+
+      <hr class="modal-divider" />
+
+      <div class="modal-section">
+        <div class="modal-section-label">Popis</div>
+        ${p.desc.split('\n').map(line => `<p class="modal-detail-text">${line.trim()}</p>`).join('')}
+      </div>
+
+      <div class="modal-section">
+        <div class="modal-section-label">Funkce</div>
+        ${highlights}
+      </div>
+
+      <div class="modal-section">
+        <div class="modal-section-label">Technologie</div>
+        <div class="modal-tags">
+          ${p.tech.map(t => `<span class="modal-tag">${t}</span>`).join('')}
+        </div>
+      </div>
+
+      ${links}
+    `
+
+    overlay.classList.add('open')
+    document.body.style.overflow = 'hidden'
+  }
+
+  function closeModal() {
+    overlay.classList.remove('open')
+    document.body.style.overflow = ''
+  }
+
+  document.querySelectorAll('[data-project]').forEach(el => {
+    el.addEventListener('click', () => openModal(el.dataset.project))
+  })
+
+  document.getElementById('modal-close').addEventListener('click', closeModal)
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeModal() })
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal() })
 </script>
 </body>
 </html>
