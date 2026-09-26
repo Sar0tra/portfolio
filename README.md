@@ -20,4 +20,4 @@ Je napsaný v čistém **HTML + CSS + JavaScript** a obsahuje informace o mně a
 
 ## 📬 Kontakt
 - Email: [kerhartf@gmail.com](mailto:tvoje@email.cz)
-- GitHub: [github.com/filipkerhart](https://github.com/filipkerhart)
+- GitHub: [github.com/filipkerhart](https://github.com/Sar0tra)
